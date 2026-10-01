@@ -1,0 +1,284 @@
+:root {
+    --bg-color: #FDFBF7;
+    --orange: #E65100;
+    --green: #4CAF50;
+    --text-dark: #333;
+    --text-light: #777;
+    --card-bg: #FFF;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-dark);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.screen {
+    display: none;
+    padding: 20px;
+    height: 100%;
+    overflow-y: auto;
+    background: var(--bg-color);
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Экран 1 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-top: 5px;
+}
+
+.settings-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+}
+
+.btn-primary {
+    background-color: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(230, 81, 0, 0.2);
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1; /* Позволяет списку занимать свободное место */
+}
+
+.reminder-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.card-meta {
+    font-size: 12px;
+    color: var(--text-light);
+    display: flex;
+    gap: 10px;
+}
+
+.card-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Toggle Switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--green);
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* Экран 2 */
+#screen-add .header {
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: var(--text-light);
+}
+
+.form-group input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    background: white;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-success {
+    background-color: var(--green);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 16px;
+    padding: 10px;
+}
+
+/* --- Стили для картинок --- */
+
+/* Контейнер прижимает картинку к низу экрана */
+.mascot-container {
+    margin-top: auto; 
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* Картинки для 1 и 2 экрана */
+.mascot-img {
+    width: 100%;
+    max-width: 320px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Картинка для 3 экрана (уведомление) */
+.mascot-img-large {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 15px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Экран 3 (Модальное окно) */
+.modal {
+    background: rgba(253, 251, 247, 0.95);
+    justify-content: center;
+    align-items: center;
+}
+
+.alert-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.speech-bubble {
+    background: white;
+    border: 2px solid #333;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    width: 90%;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 15px 15px 0;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.alert-highlight {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 10px;
+}
